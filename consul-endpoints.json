@@ -1,0 +1,261 @@
+{
+   "ACLBootstrap": {
+      "Path": "/v1/acl/bootstrap",
+      "Method": "PUT",
+      "ResponseType": "json"
+   },
+   "ACLLogin": {
+      "Path": "/v1/acl/login",
+      "Method": "POST",
+      "BodyType": "json",
+      "ResponseType": "json"
+   },
+   "ACLLogout": {
+      "Path": "/v1/acl/logout",
+      "Method": "POST",
+      "ResponseType": "json"
+   },
+   "ACLReplication": {
+      "Path": "/v1/acl/replication",
+      "Method": "GET",
+      "ResponseType": "json"
+   },
+   "ACLPolicyList": {
+      "Path": "/v1/acl/policies",
+      "Method": "GET",
+      "ResponseType": "json"
+   },
+   "ACLPolicyCreate": {
+      "Path": "/v1/acl/policy",
+      "Method": "PUT",
+      "BodyType": "json",
+      "ResponseType": "json"
+   },
+   "ACLPolicyGet": {
+      "Path": "/v1/acl/policy/%s",
+      "Method": "GET",
+      "ResponseType": "json",
+      "PathParameters": [
+         "policyID"
+      ]
+   },
+   "ACLPolicyUpdate": {
+      "Path": "/v1/acl/policy/%s",
+      "Method": "PUT",
+      "BodyType": "json",
+      "ResponseType": "json",
+      "PathParameters": [
+         "policyID"
+      ]
+   },
+   "ACLPolicyDelete": {
+      "Path": "/v1/acl/policy/%s",
+      "Method": "DELETE",
+      "ResponseType": "json",
+      "PathParameters": [
+         "policyID"
+      ]
+   },
+   "ACLPolicyGetByName": {
+      "Path": "/v1/acl/policy/name/%s",
+      "Method": "GET",
+      "ResponseType": "json",
+      "PathParameters": [
+         "policyName"
+      ]
+   },
+   "ACLRoleList": {
+      "Path": "/v1/acl/roles",
+      "Method": "GET",
+      "ResponseType": "json"
+   },
+   "ACLRoleCreate": {
+      "Path": "/v1/acl/role",
+      "Method": "PUT",
+      "BodyType": "json",
+      "ResponseType": "json"
+   },
+   "ACLRoleGet": {
+      "Path": "/v1/acl/role/%s",
+      "Method": "GET",
+      "ResponseType": "json",
+      "PathParameters": [
+         "roleID"
+      ]
+   },
+   "ACLRoleUpdate": {
+      "Path": "/v1/acl/role/%s",
+      "Method": "PUT",
+      "BodyType": "json",
+      "ResponseType": "json",
+      "PathParameters": [
+         "roleID"
+      ]
+   },
+   "ACLRoleDelete": {
+      "Path": "/v1/acl/role/%s",
+      "Method": "DELETE",
+      "ResponseType": "json",
+      "PathParameters": [
+         "roleID"
+      ]
+   },
+   "ACLRoleGetByName": {
+      "Path": "/v1/acl/role/name/%s",
+      "Method": "GET",
+      "ResponseType": "json",
+      "PathParameters": [
+         "roleName"
+      ]
+   },
+   "ACLBindingRuleList": {
+      "Path": "/v1/acl/binding-rules",
+      "Method": "GET",
+      "ResponseType": "json"
+   },
+   "ACLBindingRuleCreate": {
+      "Path": "/v1/acl/binding-rule",
+      "Method": "PUT",
+      "BodyType": "json",
+      "ResponseType": "json"
+   },
+   "ACLBindingRuleGet": {
+      "Path": "/v1/acl/binding-rule/%s",
+      "Method": "GET",
+      "ResponseType": "json",
+      "PathParameters": [
+         "bindingRuleID"
+      ]
+   },
+   "ACLBindingRuleUpdate": {
+      "Path": "/v1/acl/binding-rule/%s",
+      "Method": "PUT",
+      "BodyType": "json",
+      "PathParameters": [
+         "bindingRuleID"
+      ]
+   },
+   "ACLBindingRuleDelete": {
+      "Path": "/v1/acl/binding-rule/%s",
+      "Method": "DELETE",
+      "ResponseType": "json",
+      "PathParameters": [
+         "bindingRuleID"
+      ]
+   },
+   "ACLAuthMethodList": {
+      "Path": "/v1/acl/auth-methods",
+      "Method": "GET",
+      "ResponseType": "json"
+   },
+   "ACLAuthMethodCreate": {
+      "Path": "/v1/acl/auth-method",
+      "Method": "PUT",
+      "BodyType": "json",
+      "ResponseType": "json"
+   },
+   "ACLAuthMethodGet": {
+      "Path": "/v1/acl/auth-method/%s",
+      "Method": "GET",
+      "ResponseType": "json",
+      "PathParameters": [
+         "authMethodName"
+      ]
+   },
+   "ACLAuthMethodUpdate": {
+      "Path": "/v1/acl/auth-method/%s",
+      "Method": "PUT",
+      "BodyType": "json",
+      "PathParameters": [
+         "authMethodName"
+      ]
+   },
+   "ACLAuthMethodDelete": {
+      "Path": "/v1/acl/auth-method/%s",
+      "Method": "DELETE",
+      "ResponseType": "json",
+      "PathParameters": [
+         "authMethodName"
+      ]
+   },
+   "ACLRulesTranslate": {
+      "Path": "/v1/acl/rules/translate",
+      "Method": "POST",
+      "Body": true
+   },
+   "ACLRulesTranslateFromToken": {
+      "Path": "/v1/acl/rules/translate/%s",
+      "Method": "GET",
+      "ResponseType": "json",
+      "PathParameters": [
+         "tokenID"
+      ]
+   },
+   "ACLTokenList": {
+      "Path": "/v1/acl/tokens",
+      "Method": "GET",
+      "ResponseType": "json"
+   },
+   "ACLTokenCreate": {
+      "Path": "/v1/acl/token",
+      "Method": "PUT",
+      "Body": true
+   },
+   "ACLTokenGet": {
+      "Path": "/v1/acl/token/%s",
+      "Method": "GET",
+      "ResponseType": "json",
+      "PathParameters": [
+         "tokenID"
+      ]
+   },
+   "ACLTokenSelf": {
+      "Path": "/v1/acl/token/self",
+      "Method": "GET",
+      "ResponseType": "json",
+      "Headers": true,
+      "QueryParams": true
+   },
+   "ACLTokenUpdate": {
+      "Path": "/v1/acl/token/%s",
+      "Method": "PUT",
+      "BodyType": "json",
+      "ResponseType": "json",
+      "PathParameters": [
+         "tokenID"
+      ]
+   },
+   "ACLTokenDelete": {
+      "Path": "/v1/acl/token/%s",
+      "Method": "DELETE",
+      "ResponseType": "json",
+      "PathParameters": [
+         "tokenID"
+      ]
+   },
+   "AgentTokenSet": {
+      "Path": "/v1/agent/token/%s",
+      "Method": "PUT",
+      "BodyType": "json",
+      "ResponseType": "json",
+      "PathParameters": [
+         "tokenType"
+      ]
+   },
+   "AgentInfo": {
+      "Path": "/v1/agent/self",
+      "Method": "GET",
+      "ResponseType": "json"
+   },
+   "AgentHost": {
+      "Path": "/v1/agent/host",
+      "Method": "GET",
+      "ResponseType": "json"
+   },
+   "AgentMaintenance": {
+      "Path": "/v1/agent/maintenance",
+      "Method": "PUT",
+      "ResponseType": "none",
+      "QueryParams": true
+   }
+}
