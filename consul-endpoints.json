@@ -1,261 +1,306 @@
 {
-   "ACLBootstrap": {
+  "imports": {
+    "api": "github.com/hashicorp/consul/api"
+  },
+  "endpoints": {
+    "ACLBootstrap": {
       "Path": "/v1/acl/bootstrap",
       "Method": "PUT",
-      "ResponseType": "json"
-   },
-   "ACLLogin": {
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLToken"
+    },
+    "ACLLogin": {
       "Path": "/v1/acl/login",
       "Method": "POST",
-      "BodyType": "json",
-      "ResponseType": "json"
-   },
-   "ACLLogout": {
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLLoginParams",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLToken"
+    },
+    "ACLLogout": {
       "Path": "/v1/acl/logout",
       "Method": "POST",
-      "ResponseType": "json"
-   },
-   "ACLReplication": {
+      "ResponseFormat": "json"
+    },
+    "ACLReplication": {
       "Path": "/v1/acl/replication",
       "Method": "GET",
-      "ResponseType": "json"
-   },
-   "ACLPolicyList": {
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLReplicationStatus"
+    },
+    "ACLPolicyList": {
       "Path": "/v1/acl/policies",
       "Method": "GET",
-      "ResponseType": "json"
-   },
-   "ACLPolicyCreate": {
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLPolicyListEntry"
+    },
+    "ACLPolicyCreate": {
       "Path": "/v1/acl/policy",
       "Method": "PUT",
-      "BodyType": "json",
-      "ResponseType": "json"
-   },
-   "ACLPolicyGet": {
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLPolicy",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLPolicy"
+    },
+    "ACLPolicyGet": {
       "Path": "/v1/acl/policy/%s",
       "Method": "GET",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLPolicy",
       "PathParameters": [
          "policyID"
       ]
-   },
-   "ACLPolicyUpdate": {
+    },
+    "ACLPolicyUpdate": {
       "Path": "/v1/acl/policy/%s",
       "Method": "PUT",
-      "BodyType": "json",
-      "ResponseType": "json",
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLPolicy",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLPolicy",
       "PathParameters": [
          "policyID"
       ]
-   },
-   "ACLPolicyDelete": {
+    },
+    "ACLPolicyDelete": {
       "Path": "/v1/acl/policy/%s",
       "Method": "DELETE",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
       "PathParameters": [
          "policyID"
       ]
-   },
-   "ACLPolicyGetByName": {
+    },
+    "ACLPolicyGetByName": {
       "Path": "/v1/acl/policy/name/%s",
       "Method": "GET",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLPolicy",
       "PathParameters": [
          "policyName"
       ]
-   },
-   "ACLRoleList": {
+    },
+    "ACLRoleList": {
       "Path": "/v1/acl/roles",
       "Method": "GET",
-      "ResponseType": "json"
-   },
-   "ACLRoleCreate": {
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.ACLRole"
+    },
+    "ACLRoleCreate": {
       "Path": "/v1/acl/role",
       "Method": "PUT",
-      "BodyType": "json",
-      "ResponseType": "json"
-   },
-   "ACLRoleGet": {
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLPolicy",
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.ACLRole"
+    },
+    "ACLRoleGet": {
       "Path": "/v1/acl/role/%s",
       "Method": "GET",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLRole",
       "PathParameters": [
          "roleID"
       ]
-   },
-   "ACLRoleUpdate": {
+    },
+    "ACLRoleUpdate": {
       "Path": "/v1/acl/role/%s",
       "Method": "PUT",
-      "BodyType": "json",
-      "ResponseType": "json",
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLRole",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLRole",
       "PathParameters": [
          "roleID"
       ]
-   },
-   "ACLRoleDelete": {
+    },
+    "ACLRoleDelete": {
       "Path": "/v1/acl/role/%s",
       "Method": "DELETE",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
       "PathParameters": [
          "roleID"
       ]
-   },
-   "ACLRoleGetByName": {
+    },
+    "ACLRoleGetByName": {
       "Path": "/v1/acl/role/name/%s",
       "Method": "GET",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLRole",
       "PathParameters": [
          "roleName"
       ]
-   },
-   "ACLBindingRuleList": {
+    },
+    "ACLBindingRuleList": {
       "Path": "/v1/acl/binding-rules",
       "Method": "GET",
-      "ResponseType": "json"
-   },
-   "ACLBindingRuleCreate": {
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.ACLBindingRule"
+    },
+    "ACLBindingRuleCreate": {
       "Path": "/v1/acl/binding-rule",
       "Method": "PUT",
-      "BodyType": "json",
-      "ResponseType": "json"
-   },
-   "ACLBindingRuleGet": {
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLBindingRule",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLBindingRule"
+    },
+    "ACLBindingRuleGet": {
       "Path": "/v1/acl/binding-rule/%s",
       "Method": "GET",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLBindingRule",
       "PathParameters": [
          "bindingRuleID"
       ]
-   },
-   "ACLBindingRuleUpdate": {
+    },
+    "ACLBindingRuleUpdate": {
       "Path": "/v1/acl/binding-rule/%s",
       "Method": "PUT",
-      "BodyType": "json",
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLBindingRule",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLBindingRule",
       "PathParameters": [
          "bindingRuleID"
       ]
-   },
-   "ACLBindingRuleDelete": {
+    },
+    "ACLBindingRuleDelete": {
       "Path": "/v1/acl/binding-rule/%s",
       "Method": "DELETE",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
       "PathParameters": [
          "bindingRuleID"
       ]
-   },
-   "ACLAuthMethodList": {
+    },
+    "ACLAuthMethodList": {
       "Path": "/v1/acl/auth-methods",
       "Method": "GET",
-      "ResponseType": "json"
-   },
-   "ACLAuthMethodCreate": {
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.ACLAuthMethodListEntry"
+    },
+    "ACLAuthMethodCreate": {
       "Path": "/v1/acl/auth-method",
       "Method": "PUT",
-      "BodyType": "json",
-      "ResponseType": "json"
-   },
-   "ACLAuthMethodGet": {
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLAuthMethod",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLAuthMethod"
+    },
+    "ACLAuthMethodGet": {
       "Path": "/v1/acl/auth-method/%s",
       "Method": "GET",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLAuthMethod",
       "PathParameters": [
          "authMethodName"
       ]
-   },
-   "ACLAuthMethodUpdate": {
+    },
+    "ACLAuthMethodUpdate": {
       "Path": "/v1/acl/auth-method/%s",
       "Method": "PUT",
-      "BodyType": "json",
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLAuthMethod",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLAuthMethod",
       "PathParameters": [
          "authMethodName"
       ]
-   },
-   "ACLAuthMethodDelete": {
+    },
+    "ACLAuthMethodDelete": {
       "Path": "/v1/acl/auth-method/%s",
       "Method": "DELETE",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
       "PathParameters": [
          "authMethodName"
       ]
-   },
-   "ACLRulesTranslate": {
+    },
+    "ACLRulesTranslate": {
       "Path": "/v1/acl/rules/translate",
       "Method": "POST",
       "Body": true
-   },
-   "ACLRulesTranslateFromToken": {
+    },
+    "ACLRulesTranslateFromToken": {
       "Path": "/v1/acl/rules/translate/%s",
       "Method": "GET",
-      "ResponseType": "json",
+      "ResponseFormat": "string",
       "PathParameters": [
          "tokenID"
       ]
-   },
-   "ACLTokenList": {
+    },
+    "ACLTokenList": {
       "Path": "/v1/acl/tokens",
       "Method": "GET",
-      "ResponseType": "json"
-   },
-   "ACLTokenCreate": {
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.ACLTokenListEntry"
+    },
+    "ACLTokenCreate": {
       "Path": "/v1/acl/token",
       "Method": "PUT",
-      "Body": true
-   },
-   "ACLTokenGet": {
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLToken",
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.ACLToken"
+    },
+    "ACLTokenGet": {
       "Path": "/v1/acl/token/%s",
       "Method": "GET",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.ACLToken",
       "PathParameters": [
          "tokenID"
       ]
-   },
-   "ACLTokenSelf": {
+    },
+    "ACLTokenSelf": {
       "Path": "/v1/acl/token/self",
       "Method": "GET",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLToken",
       "Headers": true,
       "QueryParams": true
-   },
-   "ACLTokenUpdate": {
+    },
+    "ACLTokenUpdate": {
       "Path": "/v1/acl/token/%s",
       "Method": "PUT",
-      "BodyType": "json",
-      "ResponseType": "json",
+      "BodyFormat": "json",
+      "BodyType": "*api.ACLToken",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.ACLToken",
       "PathParameters": [
          "tokenID"
       ]
-   },
-   "ACLTokenDelete": {
+    },
+    "ACLTokenDelete": {
       "Path": "/v1/acl/token/%s",
       "Method": "DELETE",
-      "ResponseType": "json",
+      "ResponseFormat": "json",
       "PathParameters": [
          "tokenID"
       ]
-   },
-   "AgentTokenSet": {
+    },
+    "AgentTokenSet": {
       "Path": "/v1/agent/token/%s",
       "Method": "PUT",
-      "BodyType": "json",
-      "ResponseType": "json",
+      "BodyFormat": "string",
+      "ResponseFormat": "json",
       "PathParameters": [
          "tokenType"
       ]
-   },
-   "AgentInfo": {
+    },
+    "AgentInfo": {
       "Path": "/v1/agent/self",
       "Method": "GET",
-      "ResponseType": "json"
-   },
-   "AgentHost": {
+      "ResponseFormat": "json"
+    },
+    "AgentHost": {
       "Path": "/v1/agent/host",
       "Method": "GET",
-      "ResponseType": "json"
-   },
-   "AgentMaintenance": {
+      "ResponseFormat": "json"
+    },
+    "AgentMaintenance": {
       "Path": "/v1/agent/maintenance",
       "Method": "PUT",
-      "ResponseType": "none",
+      "ResponseFormat": "none",
       "QueryParams": true
-   }
+    }
+  }
 }
