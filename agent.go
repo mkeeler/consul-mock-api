@@ -106,8 +106,8 @@ func (m *Consul) AgentMetrics(status int, reply *api.MetricsInfo) *mockapi.MockA
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) AgentMonitor(serviceID string, status int, reply io.Reader) *mockapi.MockAPICall {
-	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/agent/monitor", serviceID))
+func (m *Consul) AgentMonitor(status int, reply io.Reader) *mockapi.MockAPICall {
+	req := mockapi.NewMockRequest("GET", "/v1/agent/monitor")
 
 	return m.WithStreamingReply(req, status, reply)
 }

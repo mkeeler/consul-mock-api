@@ -145,7 +145,6 @@
     "AgentMonitor": {
       "Path": "/v1/agent/monitor",
       "Method": "GET",
-      "PathParameters": ["serviceID"],
       "QueryParameters": true,
       "ResponseFormat": "stream"
     },
