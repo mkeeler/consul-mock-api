@@ -9,16 +9,6 @@ import (
 	"github.com/hashicorp/consul/api"
 )
 
-type Consul struct {
-	*mockapi.MockAPI
-}
-
-func NewConsul(t mockapi.TestingT) *Consul {
-	return &Consul{
-		MockAPI: mockapi.NewMockAPI(t),
-	}
-}
-
 func (m *Consul) ACLAuthMethodCreate(body *api.ACLAuthMethod, status int, reply *api.ACLAuthMethod) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/auth-method").WithBody(body)
 
