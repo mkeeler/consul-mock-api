@@ -5,6 +5,8 @@ package mockconsul
 import (
 	"fmt"
 	mockapi "github.com/mkeeler/mock-http-api"
+
+	"github.com/hashicorp/consul/api"
 )
 
 type Consul struct {
@@ -17,7 +19,7 @@ func NewConsul(t mockapi.TestingT) *Consul {
 	}
 }
 
-func (m *Consul) ACLAuthMethodCreate(body map[string]interface{}, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLAuthMethodCreate(body *api.ACLAuthMethod, status int, reply *api.ACLAuthMethod) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/auth-method").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -29,25 +31,25 @@ func (m *Consul) ACLAuthMethodDelete(authMethodName string, status int, reply in
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLAuthMethodGet(authMethodName string, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLAuthMethodGet(authMethodName string, status int, reply *api.ACLAuthMethod) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/acl/auth-method/%s", authMethodName))
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLAuthMethodList(status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLAuthMethodList(status int, reply []*api.ACLAuthMethodListEntry) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", "/v1/acl/auth-methods")
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLAuthMethodUpdate(authMethodName string, body map[string]interface{}, status int) *mockapi.MockAPICall {
+func (m *Consul) ACLAuthMethodUpdate(authMethodName string, body *api.ACLAuthMethod, status int, reply *api.ACLAuthMethod) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/acl/auth-method/%s", authMethodName)).WithBody(body)
 
-	return m.WithNoResponseBody(req, status)
+	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLBindingRuleCreate(body map[string]interface{}, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLBindingRuleCreate(body *api.ACLBindingRule, status int, reply *api.ACLBindingRule) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/binding-rule").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -59,31 +61,31 @@ func (m *Consul) ACLBindingRuleDelete(bindingRuleID string, status int, reply in
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLBindingRuleGet(bindingRuleID string, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLBindingRuleGet(bindingRuleID string, status int, reply *api.ACLBindingRule) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/acl/binding-rule/%s", bindingRuleID))
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLBindingRuleList(status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLBindingRuleList(status int, reply []*api.ACLBindingRule) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", "/v1/acl/binding-rules")
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLBindingRuleUpdate(bindingRuleID string, body map[string]interface{}, status int) *mockapi.MockAPICall {
+func (m *Consul) ACLBindingRuleUpdate(bindingRuleID string, body *api.ACLBindingRule, status int, reply *api.ACLBindingRule) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/acl/binding-rule/%s", bindingRuleID)).WithBody(body)
 
-	return m.WithNoResponseBody(req, status)
+	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLBootstrap(status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLBootstrap(status int, reply *api.ACLToken) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/bootstrap")
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLLogin(body map[string]interface{}, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLLogin(body *api.ACLLoginParams, status int, reply *api.ACLToken) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("POST", "/v1/acl/login").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -95,7 +97,7 @@ func (m *Consul) ACLLogout(status int, reply interface{}) *mockapi.MockAPICall {
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLPolicyCreate(body map[string]interface{}, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLPolicyCreate(body *api.ACLPolicy, status int, reply *api.ACLPolicy) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/policy").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -107,37 +109,37 @@ func (m *Consul) ACLPolicyDelete(policyID string, status int, reply interface{})
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLPolicyGet(policyID string, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLPolicyGet(policyID string, status int, reply *api.ACLPolicy) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/acl/policy/%s", policyID))
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLPolicyGetByName(policyName string, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLPolicyGetByName(policyName string, status int, reply *api.ACLPolicy) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/acl/policy/name/%s", policyName))
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLPolicyList(status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLPolicyList(status int, reply *api.ACLPolicyListEntry) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", "/v1/acl/policies")
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLPolicyUpdate(policyID string, body map[string]interface{}, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLPolicyUpdate(policyID string, body *api.ACLPolicy, status int, reply *api.ACLPolicy) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/acl/policy/%s", policyID)).WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLReplication(status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLReplication(status int, reply *api.ACLReplicationStatus) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", "/v1/acl/replication")
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLRoleCreate(body map[string]interface{}, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLRoleCreate(body *api.ACLPolicy, status int, reply []*api.ACLRole) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/role").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -149,25 +151,25 @@ func (m *Consul) ACLRoleDelete(roleID string, status int, reply interface{}) *mo
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLRoleGet(roleID string, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLRoleGet(roleID string, status int, reply *api.ACLRole) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/acl/role/%s", roleID))
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLRoleGetByName(roleName string, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLRoleGetByName(roleName string, status int, reply *api.ACLRole) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/acl/role/name/%s", roleName))
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLRoleList(status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLRoleList(status int, reply []*api.ACLRole) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", "/v1/acl/roles")
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLRoleUpdate(roleID string, body map[string]interface{}, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLRoleUpdate(roleID string, body *api.ACLRole, status int, reply *api.ACLRole) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/acl/role/%s", roleID)).WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -179,16 +181,16 @@ func (m *Consul) ACLRulesTranslate(status int) *mockapi.MockAPICall {
 	return m.WithNoResponseBody(req, status)
 }
 
-func (m *Consul) ACLRulesTranslateFromToken(tokenID string, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLRulesTranslateFromToken(tokenID string, status int, reply string) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/acl/rules/translate/%s", tokenID))
 
-	return m.WithJSONReply(req, status, reply)
+	return m.WithTextReply(req, status, reply)
 }
 
-func (m *Consul) ACLTokenCreate(status int) *mockapi.MockAPICall {
-	req := mockapi.NewMockRequest("PUT", "/v1/acl/token")
+func (m *Consul) ACLTokenCreate(body *api.ACLToken, status int, reply []*api.ACLToken) *mockapi.MockAPICall {
+	req := mockapi.NewMockRequest("PUT", "/v1/acl/token").WithBody(body)
 
-	return m.WithNoResponseBody(req, status)
+	return m.WithJSONReply(req, status, reply)
 }
 
 func (m *Consul) ACLTokenDelete(tokenID string, status int, reply interface{}) *mockapi.MockAPICall {
@@ -197,25 +199,25 @@ func (m *Consul) ACLTokenDelete(tokenID string, status int, reply interface{}) *
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLTokenGet(tokenID string, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLTokenGet(tokenID string, status int, reply []*api.ACLToken) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/acl/token/%s", tokenID))
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLTokenList(status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLTokenList(status int, reply []*api.ACLTokenListEntry) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", "/v1/acl/tokens")
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLTokenSelf(headers map[string]string, queryParams map[string]string, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLTokenSelf(headers map[string]string, queryParams map[string]string, status int, reply *api.ACLToken) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", "/v1/acl/token/self").WithQueryParams(queryParams).WithHeaders(headers)
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLTokenUpdate(tokenID string, body map[string]interface{}, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) ACLTokenUpdate(tokenID string, body *api.ACLToken, status int, reply *api.ACLToken) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/acl/token/%s", tokenID)).WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -239,7 +241,7 @@ func (m *Consul) AgentMaintenance(queryParams map[string]string, status int) *mo
 	return m.WithNoResponseBody(req, status)
 }
 
-func (m *Consul) AgentTokenSet(tokenType string, body map[string]interface{}, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) AgentTokenSet(tokenType string, body []byte, status int, reply interface{}) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/agent/token/%s", tokenType)).WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
