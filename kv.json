@@ -1,0 +1,87 @@
+{
+  "Imports": {
+    "api": "github.com/hashicorp/consul/api"
+  },
+  "Endpoints": {
+    "KVGet": {
+      "Path": "/v1/kv/%s",
+      "Method": "GET",
+      "PathParameters": ["key"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "*api.KVPair"
+    },
+    "KVList": {
+      "Path": "/v1/kv/%s",
+      "Method": "GET",
+      "PathParameters": ["prefix"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "api.KVPairs"
+    },
+    "KVKeys": {
+      "Path": "/v1/kv/%s",
+      "Method": "GET",
+      "PathParameters": ["prefix"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "[]string"
+    },
+    "KVPut": {
+      "Path": "/v1/kv/%s",
+      "Method": "PUT",
+      "PathParameters": ["key"],
+      "QueryParams": true,
+      "BodyFormat": "json",
+      "BodyType": "*api.KVPair"
+    },
+    "KVPutCAS": {
+      "Path": "/v1/kv/%s",
+      "Method": "PUT",
+      "PathParameters": ["key"],
+      "QueryParams": true,
+      "BodyFormat": "json",
+      "BodyType": "*api.KVPair",
+      "ResponseFormat": "json",
+      "ResponseType": "bool"
+    },
+    "KVAcquire": {
+      "Path": "/v1/kv/%s",
+      "Method": "PUT",
+      "PathParameters": ["key"],
+      "QueryParams": true,
+      "BodyFormat": "json",
+      "BodyType": "*api.KVPair",
+      "ResponseFormat": "json",
+      "ResponseType": "bool"
+    },
+    "KVRelease": {
+      "Path": "/v1/kv/%s",
+      "Method": "PUT",
+      "PathParameters": ["key"],
+      "QueryParams": true,
+      "BodyFormat": "json",
+      "BodyType": "*api.KVPair",
+      "ResponseFormat": "json",
+      "ResponseType": "bool"
+    },
+    "KVDelete": {
+      "Path": "/v1/kv/%s",
+      "Method": "DELETE",
+      "PathParameters": ["key"],
+      "QueryParams": true,
+      "BodyFormat": "json",
+      "BodyType": "*api.KVPair"
+    },
+    "KVDeleteCAS": {
+      "Path": "/v1/kv/%s",
+      "Method": "DELETE",
+      "PathParameters": ["key"],
+      "QueryParams": true,
+      "BodyFormat": "json",
+      "BodyType": "*api.KVPair",
+      "ResponseFormat": "json",
+      "ResponseType": "bool"
+    }
+  }
+}

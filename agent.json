@@ -1,0 +1,159 @@
+{
+  "Imports": {
+    "api": "github.com/hashicorp/consul/api"
+  },
+  "Endpoints": {
+    "AgentSelf": {
+      "Path": "/v1/agent/self",
+      "Method": "GET",
+      "ResponseFormat": "json",
+      "ResponseType": "map[string]map[string]interface{}"
+    },
+    "AgentHost": {
+      "Path": "/v1/agent/host",
+      "Method": "GET",
+      "ResponseFormat": "json",
+      "ResponseType": "map[string]interface{}"
+    },
+    "AgentMetrics": {
+      "Path": "/v1/agent/metrics",
+      "Method": "GET",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.MetricsInfo"
+    },
+    "AgentReload": {
+      "Path": "/v1/agent/reload",
+      "Method": "PUT"
+    },
+    "AgentChecks": {
+      "Path": "/v1/agent/checks",
+      "Method": "GET",
+      "QueryParameters": true,
+      "ResponseFormat": "json",
+      "ResponseType": "map[string]*api.AgentCheck"
+    },
+    "AgentServices": {
+      "Path": "/v1/agent/services",
+      "Method": "GET",
+      "QueryParameters": true,
+      "ResponseFormat": "json",
+      "ResponseType": "map[string]*api.AgentService"
+    },
+    "AgentHealthServiceByID": {
+      "Path": "/v1/agent/health/service/id/%s",
+      "Method": "GET",
+      "PathParameters": ["serviceID"],
+      "ResponseFormat": "json",
+      "ResponseType": "*api.AgentServiceChecksInfo"
+    },
+    "AgentHealthServiceByName": {
+      "Path": "/v1/agent/health/service/name/%s",
+      "Method": "GET",
+      "PathParameters": ["serviceName"],
+      "ResponseFormat": "json",
+      "ResponseType": "[]api.AgentServiceChecksInfo"
+    },
+    "AgentService": {
+      "Path": "/v1/agent/service/%s",
+      "Method": "GET",
+      "PathParameters": ["serviceID"],
+      "ResponseFormat": "json",
+      "ResponseType": "*api.AgentService"
+    },
+    "AgentServiceRegister": {
+      "Path": "/v1/agent/service/register",
+      "Method": "PUT",
+      "QueryParameters": true,
+      "BodyFormat": "json",
+      "BodyType": "*api.AgentServiceRegistration"
+    },
+    "AgentServiceDeregister": {
+      "Path": "/v1/agent/service/deregister",
+      "Method": "PUT"
+    },
+    "AgentMembers": {
+      "Path": "/v1/agent/members",
+      "Method": "GET",
+      "QueryParameters": true,
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.AgentMember"
+    },
+    "AgentCheckUpdateTLL": {
+      "Path": "/v1/agent/check/update/%s",
+      "Method": "PUT",
+      "PathParameters": ["checkID"],
+      "BodyFormat": "json"
+    },
+    "AgentCheckRegister": {
+      "Path": "/v1/agent/check/register",
+      "Method": "PUT",
+      "BodyFormat": "json",
+      "BodyType": "*api.AgentCheckRegistration"
+    },
+    "AgentCheckDeregister": {
+      "Path": "/v1/agent/check/deregister/%s",
+      "Method": "PUT",
+      "PathParameters": ["checkID"]
+    },
+    "AgentJoin": {
+      "Path": "/v1/agent/join/%s",
+      "Method": "PUT",
+      "PathParameters": ["address"],
+      "QueryParameters": true
+    },
+    "AgentLeave": {
+      "Path": "/v1/agent/leave/%s",
+      "Method": "PUT"
+    },
+    "AgentForceLeave": {
+      "Path": "/v1/agent/force-leave/%s",
+      "Method": "PUT",
+      "PathParameters": ["node"],
+      "QueryParameters": true
+    },
+    "AgentConnectAuthorize": {
+      "Path": "/v1/agent/connect/authorize",
+      "Method": "POST",
+      "BodyFormat": "json",
+      "BodyType": "*api.AgentAuthorizeParams"
+    },
+    "AgentConnectCARoots": {
+      "Path": "/v1/agent/connect/ca/roots",
+      "Method": "GET",
+      "ResponseFormat": "json",
+      "ResponseType": "*api.CARootList"
+    },
+    "AgentConnectCALeaf": {
+      "Path": "/v1/agent/connect/ca/leaf/%s",
+      "Method": "GET",
+      "PathParameters": ["serviceID"],
+      "ResponseFormat": "json",
+      "ResponseType": "*api.LeafCert"
+    },
+    "AgentServiceMaintenance": {
+      "Path": "/v1/agent/service/maintenance/%s",
+      "Method": "PUT",
+      "PathParameters": ["serviceID"],
+      "QueryParameters": true
+    },
+    "AgentMaintenance": {
+      "Path": "/v1/agent/maintenance",
+      "Method": "PUT",
+      "ResponseFormat": "none",
+      "QueryParameters": true
+    },
+    "AgentMonitor": {
+      "Path": "/v1/agent/monitor",
+      "Method": "GET",
+      "PathParameters": ["serviceID"],
+      "QueryParameters": true,
+      "ResponseFormat": "stream"
+    },
+    "AgentTokenSet": {
+      "Path": "/v1/agent/token/%s",
+      "Method": "PUT",
+      "PathParameters": ["tokenType"],
+      "BodyFormat": "string"
+    }
+  }
+}

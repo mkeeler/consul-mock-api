@@ -1,0 +1,17 @@
+{
+  "Endpoints": {
+    "StatusLeader": {
+      "Path": "/v1/status/leader",
+      "Method": "GET",
+      "QueryParameters": true,
+      "ResponseFormat": "string"
+    },
+    "StatusPeers": {
+      "Path": "/v1/status/peers",
+      "Method": "GET",
+      "QueryParameters": true,
+      "ResponseFormat": "json",
+      "ResponseType": "[]string"
+    }
+  }
+}
