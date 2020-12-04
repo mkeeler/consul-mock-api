@@ -27,7 +27,7 @@ func (m *Consul) KVDeleteCAS(key string, queryParams map[string]string, body *ap
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) KVGet(key string, queryParams map[string]string, status int, reply *api.KVPair) *mockapi.MockAPICall {
+func (m *Consul) KVGet(key string, queryParams map[string]string, status int, reply *api.KVPairs) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/kv/%s", key)).WithQueryParams(queryParams)
 
 	return m.WithJSONReply(req, status, reply)
@@ -39,7 +39,7 @@ func (m *Consul) KVKeys(prefix string, queryParams map[string]string, status int
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) KVList(prefix string, queryParams map[string]string, status int, reply api.KVPairs) *mockapi.MockAPICall {
+func (m *Consul) KVList(prefix string, queryParams map[string]string, status int, reply *api.KVPairs) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", fmt.Sprintf("/v1/kv/%s", prefix)).WithQueryParams(queryParams)
 
 	return m.WithJSONReply(req, status, reply)

@@ -9,7 +9,7 @@ import (
 func (m *Consul) StatusLeader(status int, reply string) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", "/v1/status/leader")
 
-	return m.WithTextReply(req, status, reply)
+	return m.WithJSONReply(req, status, reply)
 }
 
 func (m *Consul) StatusPeers(status int, reply []string) *mockapi.MockAPICall {

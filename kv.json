@@ -9,7 +9,7 @@
       "PathParameters": ["key"],
       "QueryParams": true,
       "ResponseFormat": "json",
-      "ResponseType": "*api.KVPair"
+      "ResponseType": "*api.KVPairs"
     },
     "KVList": {
       "Path": "/v1/kv/%s",
@@ -17,7 +17,7 @@
       "PathParameters": ["prefix"],
       "QueryParams": true,
       "ResponseFormat": "json",
-      "ResponseType": "api.KVPairs"
+      "ResponseType": "*api.KVPairs"
     },
     "KVKeys": {
       "Path": "/v1/kv/%s",

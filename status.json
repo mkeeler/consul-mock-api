@@ -4,7 +4,8 @@
       "Path": "/v1/status/leader",
       "Method": "GET",
       "QueryParameters": true,
-      "ResponseFormat": "string"
+      "ResponseFormat": "json",
+      "ResponseType": "string"
     },
     "StatusPeers": {
       "Path": "/v1/status/peers",
