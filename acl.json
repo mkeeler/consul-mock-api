@@ -276,31 +276,6 @@
       "PathParameters": [
          "tokenID"
       ]
-    },
-    "AgentTokenSet": {
-      "Path": "/v1/agent/token/%s",
-      "Method": "PUT",
-      "BodyFormat": "string",
-      "ResponseFormat": "json",
-      "PathParameters": [
-         "tokenType"
-      ]
-    },
-    "AgentInfo": {
-      "Path": "/v1/agent/self",
-      "Method": "GET",
-      "ResponseFormat": "json"
-    },
-    "AgentHost": {
-      "Path": "/v1/agent/host",
-      "Method": "GET",
-      "ResponseFormat": "json"
-    },
-    "AgentMaintenance": {
-      "Path": "/v1/agent/maintenance",
-      "Method": "PUT",
-      "ResponseFormat": "none",
-      "QueryParams": true
     }
   }
 }

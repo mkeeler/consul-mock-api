@@ -1,0 +1,47 @@
+{
+  "Imports": {
+    "api": "github.com/hashicorp/consul/api"
+  },
+  "Endpoints": {
+    "HealthNode": {
+      "Path": "/v1/health/node/%s",
+      "Method": "GET",
+      "PathParameters": ["node"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "api.HealthChecks"
+    },
+    "HealthChecks": {
+      "Path": "/v1/health/checks/%s",
+      "Method": "GET",
+      "PathParameters": ["service"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "api.HealthChecks"
+    },
+    "HealthService": {
+      "Path": "/v1/health/service/%s",
+      "Method": "GET",
+      "PathParameters": ["service"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.ServiceEntry"
+    },
+    "HealthConnect": {
+      "Path": "/v1/health/connect/%s",
+      "Method": "GET",
+      "PathParameters": ["service"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.ServiceEntry"
+    },
+    "HealthIngress": {
+      "Path": "/v1/health/ingress/%s",
+      "Method": "GET",
+      "PathParameters": ["service"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.ServiceEntry"
+    }
+  }
+}

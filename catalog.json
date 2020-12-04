@@ -1,0 +1,79 @@
+{
+  "Imports": {
+    "api": "github.com/hashicorp/consul/api"
+  },
+  "Endpoints": {
+    "CatalogRegister": {
+      "Path": "/v1/catalog/register",
+      "Method": "PUT",
+      "BodyFormat": "json",
+      "BodyType": "*api.CatalogRegistration",
+      "ResponseFormat": "json"
+    },
+    "CatalogDeregister": {
+      "Path": "/v1/catalog/deregister",
+      "Method": "PUT",
+      "BodyFormat": "json",
+      "BodyType": "*api.CatalogRegistration",
+      "ResponseFormat": "json"
+    },
+    "CatalogDatacenters": {
+      "Path": "/v1/catalog/datacenters",
+      "Method": "GET",
+      "ResponseFormat": "json",
+      "ResponseType": "[]string"
+    },
+    "CatalogNodes": {
+      "Path": "/v1/catalog/nodes",
+      "Method": "GET",
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.Node"
+    },
+    "CatalogServices": {
+      "Path": "/v1/catalog/services",
+      "Method": "GET",
+      "ResponseFormat": "json",
+      "ResponseType": "map[string][]string"
+    },
+    "CatalogService": {
+      "Path": "/v1/catalog/service/%s",
+      "Method": "GET",
+      "PathParameters": ["service"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.CatalogService"
+    },
+    "CatalogConnect": {
+      "Path": "/v1/catalog/connect/%s",
+      "Method": "GET",
+      "PathParameters": ["service"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.CatalogService"
+    },
+    "CatalogNode": {
+      "Path": "/v1/catalog/node/%s",
+      "Method": "GET",
+      "PathParameters": ["node"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "*api.CatalogNode"
+    },
+    "CatalogNodeServiceList": {
+      "Path": "/v1/catalog/node-services/%s",
+      "Method": "GET",
+      "PathParameters": ["node"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "*api.CatalogNodeServiceList"
+    },
+    "CatalogGatewayServices": {
+      "Path": "/v1/catalog/gateway-services/%s",
+      "Method": "GET",
+      "PathParameters": ["gateway"],
+      "QueryParams": true,
+      "ResponseFormat": "json",
+      "ResponseType": "[]*api.GatewayService"
+    }
+  }
+}
