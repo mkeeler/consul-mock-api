@@ -32,7 +32,7 @@
       "Path": "/v1/acl/policies",
       "Method": "GET",
       "ResponseFormat": "json",
-      "ResponseType": "*api.ACLPolicyListEntry"
+      "ResponseType": "[]*api.ACLPolicyListEntry"
     },
     "ACLPolicyCreate": {
       "Path": "/v1/acl/policy",

@@ -9,6 +9,16 @@ import (
 	"github.com/hashicorp/consul/api"
 )
 
+type Consul struct {
+	*mockapi.MockAPI
+}
+
+func NewConsul(t mockapi.TestingT) *Consul {
+	return &Consul{
+		MockAPI: mockapi.NewMockAPI(t),
+	}
+}
+
 func (m *Consul) ACLAuthMethodCreate(body *api.ACLAuthMethod, status int, reply *api.ACLAuthMethod) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/auth-method").WithBody(body)
 
@@ -111,7 +121,7 @@ func (m *Consul) ACLPolicyGetByName(policyName string, status int, reply *api.AC
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLPolicyList(status int, reply *api.ACLPolicyListEntry) *mockapi.MockAPICall {
+func (m *Consul) ACLPolicyList(status int, reply []*api.ACLPolicyListEntry) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("GET", "/v1/acl/policies")
 
 	return m.WithJSONReply(req, status, reply)
