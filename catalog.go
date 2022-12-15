@@ -21,7 +21,7 @@ func (m *Consul) CatalogDatacenters(status int, reply []string) *mockapi.MockAPI
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) CatalogDeregister(body *api.CatalogRegistration, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) CatalogDeregister(body []byte, status int, reply interface{}) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/catalog/deregister").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -51,7 +51,7 @@ func (m *Consul) CatalogNodes(status int, reply []*api.Node) *mockapi.MockAPICal
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) CatalogRegister(body *api.CatalogRegistration, status int, reply interface{}) *mockapi.MockAPICall {
+func (m *Consul) CatalogRegister(body []byte, status int, reply interface{}) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/catalog/register").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)

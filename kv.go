@@ -9,19 +9,19 @@ import (
 	"github.com/hashicorp/consul/api"
 )
 
-func (m *Consul) KVAcquire(key string, queryParams map[string]string, body *api.KVPair, status int, reply bool) *mockapi.MockAPICall {
+func (m *Consul) KVAcquire(key string, queryParams map[string]string, body []byte, status int, reply bool) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/kv/%s", key)).WithBody(body).WithQueryParams(queryParams)
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) KVDelete(key string, queryParams map[string]string, body *api.KVPair, status int) *mockapi.MockAPICall {
+func (m *Consul) KVDelete(key string, queryParams map[string]string, body []byte, status int) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("DELETE", fmt.Sprintf("/v1/kv/%s", key)).WithBody(body).WithQueryParams(queryParams)
 
 	return m.WithNoResponseBody(req, status)
 }
 
-func (m *Consul) KVDeleteCAS(key string, queryParams map[string]string, body *api.KVPair, status int, reply bool) *mockapi.MockAPICall {
+func (m *Consul) KVDeleteCAS(key string, queryParams map[string]string, body []byte, status int, reply bool) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("DELETE", fmt.Sprintf("/v1/kv/%s", key)).WithBody(body).WithQueryParams(queryParams)
 
 	return m.WithJSONReply(req, status, reply)
@@ -45,19 +45,19 @@ func (m *Consul) KVList(prefix string, queryParams map[string]string, status int
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) KVPut(key string, queryParams map[string]string, body *api.KVPair, status int) *mockapi.MockAPICall {
+func (m *Consul) KVPut(key string, queryParams map[string]string, body []byte, status int) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/kv/%s", key)).WithBody(body).WithQueryParams(queryParams)
 
 	return m.WithNoResponseBody(req, status)
 }
 
-func (m *Consul) KVPutCAS(key string, queryParams map[string]string, body *api.KVPair, status int, reply bool) *mockapi.MockAPICall {
+func (m *Consul) KVPutCAS(key string, queryParams map[string]string, body []byte, status int, reply bool) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/kv/%s", key)).WithBody(body).WithQueryParams(queryParams)
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) KVRelease(key string, queryParams map[string]string, body *api.KVPair, status int, reply bool) *mockapi.MockAPICall {
+func (m *Consul) KVRelease(key string, queryParams map[string]string, body []byte, status int, reply bool) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/kv/%s", key)).WithBody(body).WithQueryParams(queryParams)
 
 	return m.WithJSONReply(req, status, reply)

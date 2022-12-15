@@ -12,7 +12,7 @@
     "ACLLogin": {
       "Path": "/v1/acl/login",
       "Method": "POST",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLLoginParams",
       "ResponseFormat": "json",
       "ResponseType": "*api.ACLToken"
@@ -37,7 +37,7 @@
     "ACLPolicyCreate": {
       "Path": "/v1/acl/policy",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLPolicy",
       "ResponseFormat": "json",
       "ResponseType": "*api.ACLPolicy"
@@ -54,7 +54,7 @@
     "ACLPolicyUpdate": {
       "Path": "/v1/acl/policy/%s",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLPolicy",
       "ResponseFormat": "json",
       "ResponseType": "*api.ACLPolicy",
@@ -88,7 +88,7 @@
     "ACLRoleCreate": {
       "Path": "/v1/acl/role",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLPolicy",
       "ResponseFormat": "json",
       "ResponseType": "[]*api.ACLRole"
@@ -105,7 +105,7 @@
     "ACLRoleUpdate": {
       "Path": "/v1/acl/role/%s",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLRole",
       "ResponseFormat": "json",
       "ResponseType": "*api.ACLRole",
@@ -139,7 +139,7 @@
     "ACLBindingRuleCreate": {
       "Path": "/v1/acl/binding-rule",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLBindingRule",
       "ResponseFormat": "json",
       "ResponseType": "*api.ACLBindingRule"
@@ -156,7 +156,7 @@
     "ACLBindingRuleUpdate": {
       "Path": "/v1/acl/binding-rule/%s",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLBindingRule",
       "ResponseFormat": "json",
       "ResponseType": "*api.ACLBindingRule",
@@ -181,7 +181,7 @@
     "ACLAuthMethodCreate": {
       "Path": "/v1/acl/auth-method",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLAuthMethod",
       "ResponseFormat": "json",
       "ResponseType": "*api.ACLAuthMethod"
@@ -198,7 +198,7 @@
     "ACLAuthMethodUpdate": {
       "Path": "/v1/acl/auth-method/%s",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLAuthMethod",
       "ResponseFormat": "json",
       "ResponseType": "*api.ACLAuthMethod",
@@ -236,10 +236,10 @@
     "ACLTokenCreate": {
       "Path": "/v1/acl/token",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLToken",
       "ResponseFormat": "json",
-      "ResponseType": "[]*api.ACLToken"
+      "ResponseType": "*api.ACLToken"
     },
     "ACLTokenGet": {
       "Path": "/v1/acl/token/%s",
@@ -261,7 +261,7 @@
     "ACLTokenUpdate": {
       "Path": "/v1/acl/token/%s",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.ACLToken",
       "ResponseFormat": "json",
       "ResponseType": "*api.ACLToken",

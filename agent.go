@@ -4,10 +4,10 @@ package mockconsul
 
 import (
 	"fmt"
+	mockapi "github.com/mkeeler/mock-http-api"
 	"io"
 
 	"github.com/hashicorp/consul/api"
-	mockapi "github.com/mkeeler/mock-http-api"
 )
 
 func (m *Consul) AgentCheckDeregister(checkID string, status int) *mockapi.MockAPICall {
@@ -16,13 +16,13 @@ func (m *Consul) AgentCheckDeregister(checkID string, status int) *mockapi.MockA
 	return m.WithNoResponseBody(req, status)
 }
 
-func (m *Consul) AgentCheckRegister(body *api.AgentCheckRegistration, status int) *mockapi.MockAPICall {
+func (m *Consul) AgentCheckRegister(body []byte, status int) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/agent/check/register").WithBody(body)
 
 	return m.WithNoResponseBody(req, status)
 }
 
-func (m *Consul) AgentCheckUpdateTLL(checkID string, body map[string]interface{}, status int) *mockapi.MockAPICall {
+func (m *Consul) AgentCheckUpdateTLL(checkID string, body []byte, status int) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/agent/check/update/%s", checkID)).WithBody(body)
 
 	return m.WithNoResponseBody(req, status)
@@ -34,7 +34,7 @@ func (m *Consul) AgentChecks(status int, reply map[string]*api.AgentCheck) *mock
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) AgentConnectAuthorize(body *api.AgentAuthorizeParams, status int) *mockapi.MockAPICall {
+func (m *Consul) AgentConnectAuthorize(body []byte, status int) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("POST", "/v1/agent/connect/authorize").WithBody(body)
 
 	return m.WithNoResponseBody(req, status)
@@ -142,7 +142,7 @@ func (m *Consul) AgentServiceMaintenance(serviceID string, status int) *mockapi.
 	return m.WithNoResponseBody(req, status)
 }
 
-func (m *Consul) AgentServiceRegister(body *api.AgentServiceRegistration, status int) *mockapi.MockAPICall {
+func (m *Consul) AgentServiceRegister(body []byte, status int) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/agent/service/register").WithBody(body)
 
 	return m.WithNoResponseBody(req, status)

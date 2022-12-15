@@ -6,14 +6,14 @@
     "CatalogRegister": {
       "Path": "/v1/catalog/register",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.CatalogRegistration",
       "ResponseFormat": "json"
     },
     "CatalogDeregister": {
       "Path": "/v1/catalog/deregister",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.CatalogRegistration",
       "ResponseFormat": "json"
     },

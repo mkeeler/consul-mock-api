@@ -64,7 +64,7 @@
       "Path": "/v1/agent/service/register",
       "Method": "PUT",
       "QueryParameters": true,
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.AgentServiceRegistration"
     },
     "AgentServiceDeregister": {
@@ -82,12 +82,12 @@
       "Path": "/v1/agent/check/update/%s",
       "Method": "PUT",
       "PathParameters": ["checkID"],
-      "BodyFormat": "json"
+      "BodyFormat": "stream"
     },
     "AgentCheckRegister": {
       "Path": "/v1/agent/check/register",
       "Method": "PUT",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.AgentCheckRegistration"
     },
     "AgentCheckDeregister": {
@@ -114,7 +114,7 @@
     "AgentConnectAuthorize": {
       "Path": "/v1/agent/connect/authorize",
       "Method": "POST",
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.AgentAuthorizeParams"
     },
     "AgentConnectCARoots": {
