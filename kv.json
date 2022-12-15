@@ -32,7 +32,7 @@
       "Method": "PUT",
       "PathParameters": ["key"],
       "QueryParams": true,
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.KVPair"
     },
     "KVPutCAS": {
@@ -40,7 +40,7 @@
       "Method": "PUT",
       "PathParameters": ["key"],
       "QueryParams": true,
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.KVPair",
       "ResponseFormat": "json",
       "ResponseType": "bool"
@@ -50,7 +50,7 @@
       "Method": "PUT",
       "PathParameters": ["key"],
       "QueryParams": true,
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.KVPair",
       "ResponseFormat": "json",
       "ResponseType": "bool"
@@ -60,7 +60,7 @@
       "Method": "PUT",
       "PathParameters": ["key"],
       "QueryParams": true,
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.KVPair",
       "ResponseFormat": "json",
       "ResponseType": "bool"
@@ -70,7 +70,7 @@
       "Method": "DELETE",
       "PathParameters": ["key"],
       "QueryParams": true,
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.KVPair"
     },
     "KVDeleteCAS": {
@@ -78,7 +78,7 @@
       "Method": "DELETE",
       "PathParameters": ["key"],
       "QueryParams": true,
-      "BodyFormat": "json",
+      "BodyFormat": "stream",
       "BodyType": "*api.KVPair",
       "ResponseFormat": "json",
       "ResponseType": "bool"

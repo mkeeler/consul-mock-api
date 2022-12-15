@@ -9,7 +9,7 @@ import (
 	"github.com/hashicorp/consul/api"
 )
 
-func (m *Consul) ACLAuthMethodCreate(body *api.ACLAuthMethod, status int, reply *api.ACLAuthMethod) *mockapi.MockAPICall {
+func (m *Consul) ACLAuthMethodCreate(body []byte, status int, reply *api.ACLAuthMethod) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/auth-method").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -33,13 +33,13 @@ func (m *Consul) ACLAuthMethodList(status int, reply []*api.ACLAuthMethodListEnt
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLAuthMethodUpdate(authMethodName string, body *api.ACLAuthMethod, status int, reply *api.ACLAuthMethod) *mockapi.MockAPICall {
+func (m *Consul) ACLAuthMethodUpdate(authMethodName string, body []byte, status int, reply *api.ACLAuthMethod) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/acl/auth-method/%s", authMethodName)).WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLBindingRuleCreate(body *api.ACLBindingRule, status int, reply *api.ACLBindingRule) *mockapi.MockAPICall {
+func (m *Consul) ACLBindingRuleCreate(body []byte, status int, reply *api.ACLBindingRule) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/binding-rule").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -63,7 +63,7 @@ func (m *Consul) ACLBindingRuleList(status int, reply []*api.ACLBindingRule) *mo
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLBindingRuleUpdate(bindingRuleID string, body *api.ACLBindingRule, status int, reply *api.ACLBindingRule) *mockapi.MockAPICall {
+func (m *Consul) ACLBindingRuleUpdate(bindingRuleID string, body []byte, status int, reply *api.ACLBindingRule) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/acl/binding-rule/%s", bindingRuleID)).WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -75,7 +75,7 @@ func (m *Consul) ACLBootstrap(status int, reply *api.ACLToken) *mockapi.MockAPIC
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLLogin(body *api.ACLLoginParams, status int, reply *api.ACLToken) *mockapi.MockAPICall {
+func (m *Consul) ACLLogin(body []byte, status int, reply *api.ACLToken) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("POST", "/v1/acl/login").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -87,7 +87,7 @@ func (m *Consul) ACLLogout(status int, reply interface{}) *mockapi.MockAPICall {
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLPolicyCreate(body *api.ACLPolicy, status int, reply *api.ACLPolicy) *mockapi.MockAPICall {
+func (m *Consul) ACLPolicyCreate(body []byte, status int, reply *api.ACLPolicy) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/policy").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -117,7 +117,7 @@ func (m *Consul) ACLPolicyList(status int, reply []*api.ACLPolicyListEntry) *moc
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLPolicyUpdate(policyID string, body *api.ACLPolicy, status int, reply *api.ACLPolicy) *mockapi.MockAPICall {
+func (m *Consul) ACLPolicyUpdate(policyID string, body []byte, status int, reply *api.ACLPolicy) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/acl/policy/%s", policyID)).WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -129,7 +129,7 @@ func (m *Consul) ACLReplication(status int, reply *api.ACLReplicationStatus) *mo
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLRoleCreate(body *api.ACLPolicy, status int, reply []*api.ACLRole) *mockapi.MockAPICall {
+func (m *Consul) ACLRoleCreate(body []byte, status int, reply []*api.ACLRole) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/role").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -159,7 +159,7 @@ func (m *Consul) ACLRoleList(status int, reply []*api.ACLRole) *mockapi.MockAPIC
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLRoleUpdate(roleID string, body *api.ACLRole, status int, reply *api.ACLRole) *mockapi.MockAPICall {
+func (m *Consul) ACLRoleUpdate(roleID string, body []byte, status int, reply *api.ACLRole) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/acl/role/%s", roleID)).WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -177,7 +177,7 @@ func (m *Consul) ACLRulesTranslateFromToken(tokenID string, status int, reply st
 	return m.WithTextReply(req, status, reply)
 }
 
-func (m *Consul) ACLTokenCreate(body *api.ACLToken, status int, reply []*api.ACLToken) *mockapi.MockAPICall {
+func (m *Consul) ACLTokenCreate(body []byte, status int, reply *api.ACLToken) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", "/v1/acl/token").WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
@@ -207,7 +207,7 @@ func (m *Consul) ACLTokenSelf(headers map[string]string, queryParams map[string]
 	return m.WithJSONReply(req, status, reply)
 }
 
-func (m *Consul) ACLTokenUpdate(tokenID string, body *api.ACLToken, status int, reply *api.ACLToken) *mockapi.MockAPICall {
+func (m *Consul) ACLTokenUpdate(tokenID string, body []byte, status int, reply *api.ACLToken) *mockapi.MockAPICall {
 	req := mockapi.NewMockRequest("PUT", fmt.Sprintf("/v1/acl/token/%s", tokenID)).WithBody(body)
 
 	return m.WithJSONReply(req, status, reply)
